@@ -1,0 +1,5 @@
+* Create a table for Users Courses ✅
+
+* Use the query format in Counter.php to get them ✅
+
+* Had thoughts on making the array more readable so I send them in the form request and after that loop through and add to the table

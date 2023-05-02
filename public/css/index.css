@@ -1,0 +1,6 @@
+.hero {
+    background: url('../images/cdc-UqTrGSohyCs-unsplash.jpg'), #00000080 !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-blend-mode: multiply !important;
+}

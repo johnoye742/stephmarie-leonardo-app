@@ -1,0 +1,25 @@
+.dark-mode {
+    background-color: rgb(51 65 85 / 1);
+    color: white;
+}
+
+.dark-card {
+    background-color: rgb(71 85 105 / 1);
+}
+
+.dark-card-inside {
+    background-color: rgb(100 116 139 / 1);
+}
+
+.light-mode {
+    background-color: rgb(243 244 246 / 1);
+    color: black;
+}
+
+.light-card {
+    --bg-color: white;
+}
+
+.light-card-inside {
+    --bg-color: rgb(243 244 246 / 1);
+}
