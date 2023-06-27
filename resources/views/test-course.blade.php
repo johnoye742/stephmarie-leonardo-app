@@ -122,7 +122,10 @@
                     <h1 class="text-3xl mb-5"><b>Lesson:</b> {{ $thisLesson -> title }}</h1>
                     <h1 class="text-2xl mb-5">Description</h1>
                     <p>{{ $thisLesson -> description }}</p>
-                    <livewire:next-lesson wire:with="['j', 'k']" wire:params="['j', 'k']" wire:data="['j', 'k']"></livewire:next-lesson>
+                    @if ($nextLesson != null)
+                        <livewire:next-lesson :data="['lesson_id' => $thisLesson -> id, 'url' => $nextLesson -> title, 'name' => $name]"></livewire:next-lesson>
+                    @endif
+                    
                 </div>
             </div>
         </div>

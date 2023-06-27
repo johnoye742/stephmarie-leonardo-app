@@ -133,24 +133,35 @@ Route::get('/courses/{name}/{title}', function ($name, $title) {
         $currLesson = $curr;
     }
 
-    $currIndex = $currLess -> search($currLesson);
+    $currIndex = $lessons -> search($currLesson);
     $nextLesson = null;
     $nextIndex = 0;
     $index = 0;
     
-    foreach($lessons as $l)  {
+/*    foreach($lessons as $l)  {
         $index++;
         if($lessons[$index] == $lessons[$currIndex]) {
             $nextIndex = $lessons[$index + 1];
         }
     }
-
-    $nextLesson = Lessons::find($nextIndex)[0];
-
+*/
+    Log::debug("count:" . count($currLess));
+    Log::debug('lessons: ' . count($lessons));
+    Log::debug('index: ' . $currIndex);
+    if($currIndex < count($lessons)) {
+        $nextLesson = null;
+       
+    } else { 
+       $nextLesson = $lessons[$currIndex + 1];
+    }
+    
     Log::debug("Next Title: "  . $nextLesson);
+    
+
+    
     if($currLesson != null && !empty($currLesson) && $currLesson != []) return view('test-course', ['lessons' => $lessons, 'name' => $name, 'thisLesson' => $currLesson, 'curr' => 'hidden', 'nextLesson' => $nextLesson, 'courseName' => $name]);
 
     return "404";
     
-}) -> name('lesson');
+}) -> name('lesson') -> middleware('auth');
 

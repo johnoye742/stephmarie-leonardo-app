@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class NextLesson extends Component
 {
+    public $data;
    
     public function render()
     {
@@ -16,13 +17,16 @@ class NextLesson extends Component
     }
 
     public function mount() {
-
+        $name = $this -> data['url'];
+        Log::debug($name);
     }
 
     public function next() {
-        $lesson_id = $this ->componentParams;
-        $url = $this -> params[1]; 
-        $name = $this -> params[2];
+        Log::debug($this -> data);
+        $lesson_id = $this -> data['lesson_id'];
+        $url = $this -> data['url']; 
+        $name = $this -> data['name'];
+        
         $username = Auth::getUser() -> username;
         $date = date('d-m-yyyy');
         $less = new CompletedLessons([
@@ -34,7 +38,7 @@ class NextLesson extends Component
         $finalUrl = strtolower(str_replace(' ', '-', $url));
 
         if($less -> save()) {
-            return redirect() -> to('lesson', ['name' => $name, 'title' => $finalUrl]);
+            return redirect() -> route('lesson', ['name' => $name, 'title' => $finalUrl]);
         }
         
     }
